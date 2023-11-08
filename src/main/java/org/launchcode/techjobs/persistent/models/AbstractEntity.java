@@ -16,10 +16,21 @@ public abstract class AbstractEntity {
     @Id
     @GeneratedValue
     private int id;
+    private static int nextId = 1;
 
     @NotBlank
     @Size(min = 3, max = 250)
     private String name;
+
+    public AbstractEntity() {
+        id = nextId;
+        nextId++;
+    }
+
+    public AbstractEntity(String name) {
+        this();
+        this.name = name;
+    }
 
     public int getId() {
         return id;
