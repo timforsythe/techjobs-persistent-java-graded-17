@@ -42,7 +42,7 @@ public class SkillController {
         skillRepository.save(newSkill);
         model.addAttribute("employers", skillRepository);
 
-        return "redirect:";
+        return "redirect:/add";
     }
 
     @GetMapping("view/{skillId}")

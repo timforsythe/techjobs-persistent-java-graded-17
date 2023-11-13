@@ -5,7 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
@@ -19,7 +18,7 @@ public abstract class AbstractEntity {
     private static int nextId = 1;
 
     @NotBlank
-    @Size(min = 3, max = 250)
+    @Size(max = 250)
     private String name;
 
     public AbstractEntity() {
