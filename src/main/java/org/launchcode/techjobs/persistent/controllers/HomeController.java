@@ -32,7 +32,7 @@ public class HomeController {
     @Autowired
     private SkillRepository skillRepository;
 
-    @RequestMapping("/")
+    @RequestMapping("")
     public String index(Model model) {
 
         model.addAttribute("title", "MyJobs");
@@ -72,10 +72,35 @@ public class HomeController {
         return "redirect:";
     }
 
-    @GetMapping("view/{jobId}")
+    /*@GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
 
             return "view";
+    }*/
+
+    @GetMapping("view/{jobId}")
+    public String displayViewJob(Model model, @PathVariable int jobId) {
+        Optional optJob = jobRepository.findById(jobId);
+        if (optJob.isPresent()) {
+            Job job = (Job) optJob.get();
+            model.addAttribute("job", job);
+            return "view";
+        } else {
+            return "redirect:/";
+        }
     }
+
+    /*@GetMapping("view/{skillId}")
+    public String displayViewSkill(Model model, @PathVariable int skillId) {
+        Optional optSkill = skillRepository.findById(skillId);
+        if (optSkill.isPresent()) {
+            Skill skill = (Skill) optSkill.get();
+            model.addAttribute("skill", skill);
+            return "skills/view";
+        } else {
+            return "redirect:../";
+        }
+
+    }*/
 
 }

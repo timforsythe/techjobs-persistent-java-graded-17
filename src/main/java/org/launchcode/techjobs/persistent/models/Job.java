@@ -16,8 +16,7 @@ public class Job extends AbstractEntity {
     @JoinColumn(name = "skills_id")
     private List<Skill> skills = new ArrayList<>();
 
-    public Job() {
-    }
+    public Job() {}
 
     // Initialize the id and value fields.
     public Job(Employer anEmployer, List<Skill> someSkills) {
